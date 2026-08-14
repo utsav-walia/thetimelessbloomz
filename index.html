@@ -73,6 +73,7 @@ header.solid{background:rgba(251,247,241,.93);backdrop-filter:blur(14px);box-sha
   color:var(--ink);flex:none;transition:.4s;
 }
 header.solid .mono{width:36px;height:36px;font-size:.9rem}
+img.mono{object-fit:cover;padding:0}
 .brand b{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.22rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
 .brand small{display:block;font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3);margin-top:2px}
 nav ul{display:flex;gap:2.1rem;list-style:none}
@@ -137,6 +138,12 @@ nav a:hover::after{width:100%}
 }
 .stamp span{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2);line-height:1.5;padding:0 12px}
 @keyframes spin{to{transform:rotate(360deg)}}
+/* seal-backed stamp: seal holds still, wording circles it */
+.stamp.sealed{background:none;border:0;box-shadow:none;animation:none}
+.stamp.sealed .seal{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;object-fit:cover;box-shadow:0 18px 40px -22px rgba(44,32,25,.6)}
+.stamp.sealed .ring{position:absolute;inset:-14px;animation:spin 26s linear infinite}
+.stamp.sealed .ring text{font-family:'Jost',sans-serif;font-size:8.2px;letter-spacing:2.6px;text-transform:uppercase;fill:var(--ink-2)}
+@media(prefers-reduced-motion:reduce){.stamp,.stamp.sealed .ring{animation:none}}
 .scroll-hint{position:absolute;bottom:2.2rem;left:50%;transform:translateX(-50%);text-align:center}
 .scroll-hint i{display:block;width:1px;height:52px;background:linear-gradient(var(--burlap),transparent);margin:.6rem auto 0}
 .scroll-hint span{font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-3)}
@@ -188,7 +195,7 @@ section{padding:clamp(5rem,10vw,9rem) 0;position:relative;scroll-margin-top:80px
 .card.in{opacity:1;transform:none}
 .card.hide{display:none}
 .card-img{position:relative;overflow:hidden;background:var(--paper-2);aspect-ratio:3/4;border-radius:3px}
-.card-img img{width:100%;height:100%;object-fit:cover;transition:1.2s cubic-bezier(.2,.7,.3,1)}
+.card-img img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;transition:1.2s cubic-bezier(.2,.7,.3,1)}
 .card:hover .card-img img{transform:scale(1.06)}
 .card-img .emo{
   position:absolute;top:12px;left:12px;background:rgba(251,247,241,.92);backdrop-filter:blur(6px);
@@ -295,6 +302,7 @@ footer ul{list-style:none;font-size:.9rem;display:grid;gap:.55rem}
 footer a:hover{color:#fff}
 .f-brand p{font-size:.94rem;max-width:34ch;margin-top:1rem;opacity:.8}
 .f-mono{width:52px;height:52px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;font-family:'Cormorant Garamond',serif;color:var(--cream);font-size:1.15rem;letter-spacing:-.06em}
+img.f-mono{object-fit:cover}
 .f-bot{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:1.6rem;font-size:.72rem;letter-spacing:.1em;opacity:.65}
 
 /* cart drawer */
@@ -361,7 +369,7 @@ footer a:hover{color:#fff}
 <header id="hdr">
   <div class="wrap nav">
     <a href="#top" class="brand">
-      <span class="mono">TTB</span>
+      <img class="mono" src="images/seal.png" alt="The Timeless Bloomz seal">
       <span>
         <b>The Timeless Bloomz</b>
         <small>For the feelings words cannot hold</small>
@@ -402,8 +410,14 @@ footer a:hover{color:#fff}
       </div>
     </div>
     <figure class="hero-fig">
-      <div class="frame"><img src="images/hero.jpg" alt="Dried flower bouquet wrapped in burlap"></div>
-      <div class="stamp"><span>Preserved ·<br>Not Perishable ·<br>Since 2025 ·</span></div>
+      <div class="frame"><img src="images/timeless_bloomz_05_brown_roses.jpg" alt="Brown dried roses in burlap wrap with a Timeless Bloomz tag"></div>
+      <div class="stamp sealed">
+        <img class="seal" src="images/seal.png" alt="The Timeless Bloomz seal">
+        <svg class="ring" viewBox="0 0 144 144" aria-hidden="true">
+          <defs><path id="circPath" d="M72,72 m-62,0 a62,62 0 1,1 124,0 a62,62 0 1,1 -124,0"></path></defs>
+          <text><textPath href="#circPath" startOffset="0">Preserved · Not Perishable · Since 2025 ·</textPath></text>
+        </svg>
+      </div>
     </figure>
   </div>
   <div class="scroll-hint"><span>Scroll</span><i></i></div>
@@ -421,8 +435,8 @@ footer a:hover{color:#fff}
 <section class="story" id="story">
   <div class="wrap story-grid">
     <figure class="story-fig reveal">
-      <img src="images/bouquet-signature.jpg" alt="Dried roses and baby's breath">
-      <img class="tagimg" src="images/tag.jpg" alt="The Timeless Bloomz message tag">
+      <img src="images/ttb-story.jpg" alt="A Human Truth card beside a Timeless Bloomz tag">
+      <img class="tagimg" src="images/ttb-tag.jpg" alt="The Timeless Bloomz message tag held in hand">
     </figure>
     <div class="reveal">
       <p class="eyebrow">Our Story</p>
@@ -486,7 +500,7 @@ footer a:hover{color:#fff}
 <!-- ================= BANNER ================= -->
 <section class="banner">
   <div class="banner-inner">
-    <img src="images/tags-banner.jpg" alt="Message tags on dried bouquets">
+    <img src="images/ttb-banner.jpg" alt="Three dried bouquets in burlap, blue and blush wraps">
     <div class="banner-txt">
       <h2>For the feelings words cannot hold.</h2>
       <p>Because "I'm proud of you" sounds better tied to something that lasts.</p>
@@ -563,11 +577,11 @@ footer a:hover{color:#fff}
       </form>
 
       <div class="reveal">
-        <img src="images/collection-wide.jpg" alt="Four dried flower bouquets" style="width:100%;border-radius:4px;box-shadow:var(--shadow)">
+        <img src="images/ttb-card.jpg" alt="The Timeless Bloomz card" style="width:100%;border-radius:4px;box-shadow:var(--shadow)">
         <div class="contact-lines">
           <a href="#" id="waLink"><span><small>WhatsApp</small><b>Message us directly</b></span></a>
-          <a href="#" id="igLink"><span><small>Instagram</small><b>@thetimelessbloomz</b></span></a>
-          <a href="#" id="mailLink"><span><small>Email</small><b>hello@thetimelessbloomz.com</b></span></a>
+          <a href="#" id="igLink"><span><small>Instagram</small><b>@the_timeless_toons</b></span></a>
+          <a href="#" id="mailLink"><span><small>Email</small><b>jaiswalsatya376@gmail.com</b></span></a>
         </div>
         <p style="font-size:.86rem;color:var(--ink-3);margin-top:1.4rem">Made to order — please allow 2–4 days for us to dry, tie and letter your bouquet before dispatch.</p>
       </div>
@@ -580,7 +594,7 @@ footer a:hover{color:#fff}
   <div class="wrap">
     <div class="f-grid">
       <div class="f-brand">
-        <div class="f-mono">TTB</div>
+        <img class="f-mono" src="images/seal.png" alt="The Timeless Bloomz seal">
         <h5 style="margin-top:1.1rem">The Timeless Bloomz</h5>
         <p>For the feelings words cannot hold. Hand-tied everlasting bouquets, delivered with your words attached.</p>
       </div>
@@ -628,30 +642,30 @@ footer a:hover{color:#fff}
 <script>
 /* ====== EDIT THESE THREE LINES ====== */
 const CONFIG = {
-  whatsapp: "919999999999",                 // your number, country code, no + or spaces
-  instagram: "https://instagram.com/thetimelessbloomz",
-  email: "hello@thetimelessbloomz.com"
+  whatsapp: "919369466294",                 // your number, country code, no + or spaces
+  instagram: "https://www.instagram.com/the_timeless_toons",
+  email: "jaiswalsatya376@gmail.com"
 };
 /* ==================================== */
 
 const BOUQUETS = [
   { id:'signature', name:'The Burlap Classic', emo:'Love',
-    img:'images/bouquet-signature.jpg',
+    img:'images/timeless_bloomz_05_brown_roses.jpg',
     desc:'Chocolate-brown roses, baby’s breath and bunny tails in raw burlap. Our first, and still the one people cry over.' },
   { id:'paper-posy', name:'Paper & Posy', emo:'Gratitude',
-    img:'images/bouquet-1.jpg',
+    img:'images/timeless_bloomz_01_newspaper.jpg',
     desc:'Newsprint and burlap wrap around ivory sola blooms — quiet, warm, and impossible to throw away.' },
   { id:'burlap-petite', name:'Burlap Petite', emo:'Just Because',
-    img:'images/bouquet-2.jpg',
+    img:'images/timeless_bloomz_02_burlap.jpg',
     desc:'A small handful of dried wildflowers. The one you send on a Tuesday for no reason at all.' },
   { id:'quiet-blue', name:'Quiet Blue', emo:'Congratulations',
-    img:'images/bouquet-3.jpg',
+    img:'images/timeless_bloomz_03_blue.jpg',
     desc:'Powder-blue tissue, white sola roses and pampas. For beginnings, offers, and good news.' },
   { id:'blush-hour', name:'Blush Hour', emo:'Missing You',
-    img:'images/bouquet-4.jpg',
+    img:'images/timeless_bloomz_04_pink.jpg',
     desc:'Dusty pink wrap with pampas and preserved blooms. Soft enough to say the thing you keep swallowing.' },
   { id:'the-apology', name:'The Quiet Sorry', emo:'Apology',
-    img:'images/bouquet-macro.jpg',
+    img:'images/ttb-sorry.jpg',
     desc:'Muted kraft wrap, no loud colour, one folded tag. Built for the conversations that need less noise.' }
 ];
 
