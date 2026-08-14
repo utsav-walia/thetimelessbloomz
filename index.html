@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Timeless Bloomz — For the feelings words cannot hold</title>
+<meta name="description" content="Hand-tied dried flower bouquets that never wilt, carrying a handwritten message. For the feelings words cannot hold.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FBF7F1;
+  --paper:#F3EADC;
+  --paper-2:#EADFCD;
+  --ink:#2C2019;
+  --ink-2:#5B4938;
+  --ink-3:#8A7663;
+  --gold:#A98B5C;
+  --burlap:#C7A87C;
+  --rose:#DDB6AE;
+  --sage:#8E9379;
+  --line:rgba(44,32,25,.14);
+  --shadow:0 24px 60px -30px rgba(44,32,25,.45);
+  --r:2px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:'Jost',system-ui,sans-serif;
+  font-weight:300;
+  font-size:16px;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body.locked{overflow:hidden}
+/* paper grain */
+body::before{
+  content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.35;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply;
+}
+h1,h2,h3,h4,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;line-height:1.12;letter-spacing:.005em}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font:inherit;color:inherit}
+::selection{background:var(--burlap);color:#fff}
+
+.wrap{width:min(1180px,92vw);margin-inline:auto}
+.eyebrow{
+  font-size:.66rem;letter-spacing:.42em;text-transform:uppercase;color:var(--ink-3);
+  font-weight:400;display:flex;align-items:center;gap:.9rem;
+}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--burlap);display:block}
+.eyebrow.center{justify-content:center}
+.eyebrow.center::after{content:"";width:34px;height:1px;background:var(--burlap);display:block}
+
+/* ---------- nav ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  padding:1.15rem 0;transition:.5s cubic-bezier(.2,.7,.3,1);
+}
+header.solid{background:rgba(251,247,241,.93);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:.7rem 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:flex;align-items:center;gap:.75rem}
+.mono{
+  width:42px;height:42px;border-radius:50%;border:1px solid var(--gold);
+  display:grid;place-items:center;background:var(--paper);
+  font-family:'Cormorant Garamond',serif;font-size:1.02rem;letter-spacing:-.06em;
+  color:var(--ink);flex:none;transition:.4s;
+}
+header.solid .mono{width:36px;height:36px;font-size:.9rem}
+.brand b{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.22rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.brand small{display:block;font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3);margin-top:2px}
+nav ul{display:flex;gap:2.1rem;list-style:none}
+nav a{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2);position:relative;padding-bottom:3px}
+nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:.4s}
+nav a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.cart-btn{
+  display:flex;align-items:center;gap:.55rem;background:none;border:1px solid var(--line);
+  padding:.5rem .95rem;border-radius:100px;cursor:pointer;font-size:.7rem;letter-spacing:.16em;
+  text-transform:uppercase;transition:.35s;
+}
+.cart-btn:hover{border-color:var(--gold);background:var(--paper)}
+.cart-count{
+  min-width:18px;height:18px;border-radius:50%;background:var(--ink);color:var(--cream);
+  font-size:.62rem;display:grid;place-items:center;letter-spacing:0;padding:0 4px;
+}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:.4rem;flex-direction:column;gap:4px}
+.burger span{width:22px;height:1px;background:var(--ink);display:block;transition:.3s}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  padding:1rem 2.1rem;border:1px solid var(--ink);background:var(--ink);color:var(--cream);
+  font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;cursor:pointer;
+  border-radius:100px;transition:.45s cubic-bezier(.2,.7,.3,1);position:relative;overflow:hidden;
+}
+.btn:hover{background:transparent;color:var(--ink)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--ink);background:var(--ink);color:var(--cream)}
+.btn.wa{background:#25623f;border-color:#25623f;color:#fff}
+.btn.wa:hover{background:transparent;color:#25623f}
+.btn.sm{padding:.72rem 1.4rem;font-size:.64rem;letter-spacing:.2em}
+.btn.full{width:100%}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:8rem 0 4rem;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:
+   radial-gradient(120% 80% at 78% 40%, rgba(199,168,124,.22), transparent 60%),
+   radial-gradient(90% 70% at 8% 80%, rgba(221,182,174,.20), transparent 60%),
+   var(--cream);}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,6vw,6rem);align-items:center}
+.hero h1{font-size:clamp(3.1rem,8.2vw,7rem);letter-spacing:-.015em}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero .lede{max-width:34ch;color:var(--ink-2);margin-top:1.6rem;font-size:1.06rem}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:2.4rem}
+.hero-meta{display:flex;gap:2.4rem;margin-top:3.2rem;flex-wrap:wrap}
+.hero-meta div{max-width:150px}
+.hero-meta strong{display:block;font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:400}
+.hero-meta span{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
+.hero-fig{position:relative}
+.hero-fig .frame{
+  position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:260px 260px 6px 6px;
+  box-shadow:var(--shadow);
+}
+.hero-fig img{width:100%;height:100%;object-fit:cover;object-position:52% 42%;transform:scale(1.02)}
+.hero-fig .frame::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 90px rgba(44,32,25,.28);border-radius:inherit}
+.stamp{
+  position:absolute;left:-38px;bottom:34px;width:132px;height:132px;border-radius:50%;
+  background:var(--paper);border:1px solid var(--gold);display:grid;place-items:center;text-align:center;
+  box-shadow:0 18px 40px -22px rgba(44,32,25,.6);animation:spin 26s linear infinite;
+}
+.stamp span{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2);line-height:1.5;padding:0 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.scroll-hint{position:absolute;bottom:2.2rem;left:50%;transform:translateX(-50%);text-align:center}
+.scroll-hint i{display:block;width:1px;height:52px;background:linear-gradient(var(--burlap),transparent);margin:.6rem auto 0}
+.scroll-hint span{font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-3)}
+
+/* ---------- marquee ---------- */
+.marquee{border-block:1px solid var(--line);background:var(--paper);padding:1.05rem 0;overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-flex;gap:3.4rem;animation:slide 34s linear infinite}
+.marquee span{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.22rem;color:var(--ink-2)}
+.marquee span::after{content:"✿";margin-left:3.4rem;color:var(--burlap);font-style:normal;font-size:.7rem;vertical-align:middle}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+section{padding:clamp(5rem,10vw,9rem) 0;position:relative;scroll-margin-top:80px}
+.sec-head{max-width:640px;margin-bottom:3.4rem}
+.sec-head.center{margin-inline:auto;text-align:center}
+.sec-head h2{font-size:clamp(2.3rem,5vw,4rem);margin-top:1.1rem}
+.sec-head p{color:var(--ink-2);margin-top:1.1rem;font-size:1.02rem}
+
+/* story */
+.story{background:linear-gradient(var(--cream),var(--paper))}
+.story-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,6vw,5.5rem);align-items:center}
+.story-fig{position:relative}
+.story-fig img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;box-shadow:var(--shadow)}
+.story-fig .tagimg{
+  position:absolute;right:-28px;bottom:-32px;width:44%;aspect-ratio:3/4;object-fit:cover;
+  border:8px solid var(--cream);border-radius:3px;box-shadow:var(--shadow);
+}
+.story blockquote{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.3rem);font-style:italic;
+  line-height:1.35;margin:2rem 0;padding-left:1.6rem;border-left:1px solid var(--burlap);color:var(--ink)
+}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:2.6rem}
+.pillar h4{font-size:1.28rem;margin-bottom:.35rem}
+.pillar p{font-size:.9rem;color:var(--ink-2);line-height:1.65}
+.pillar i{display:block;width:26px;height:1px;background:var(--burlap);margin-bottom:.9rem}
+
+/* emotions */
+.emo-chips{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-bottom:3rem}
+.chip{
+  padding:.62rem 1.35rem;border:1px solid var(--line);border-radius:100px;background:transparent;
+  font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:.35s;color:var(--ink-2)
+}
+.chip:hover{border-color:var(--burlap);color:var(--ink)}
+.chip.on{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+
+/* collection */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(276px,1fr));gap:2.2rem}
+.card{position:relative;opacity:0;transform:translateY(26px);transition:.8s cubic-bezier(.2,.7,.3,1)}
+.card.in{opacity:1;transform:none}
+.card.hide{display:none}
+.card-img{position:relative;overflow:hidden;background:var(--paper-2);aspect-ratio:3/4;border-radius:3px}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:1.2s cubic-bezier(.2,.7,.3,1)}
+.card:hover .card-img img{transform:scale(1.06)}
+.card-img .emo{
+  position:absolute;top:12px;left:12px;background:rgba(251,247,241,.92);backdrop-filter:blur(6px);
+  padding:.34rem .8rem;border-radius:100px;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2)
+}
+.card-img .add{
+  position:absolute;left:12px;right:12px;bottom:12px;transform:translateY(14px);opacity:0;transition:.45s;
+}
+.card:hover .add,.card:focus-within .add{transform:none;opacity:1}
+.card h3{font-size:1.5rem;margin-top:1.05rem}
+.card .desc{font-size:.88rem;color:var(--ink-2);margin-top:.3rem;line-height:1.62}
+.card .price{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-top:.6rem}
+
+/* tag builder */
+.tagsec{background:var(--paper)}
+.tag-grid{display:grid;grid-template-columns:1fr .9fr;gap:clamp(2rem,6vw,5rem);align-items:center}
+.truths{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 1.8rem}
+.truth{
+  padding:.5rem 1rem;border:1px dashed var(--burlap);border-radius:100px;background:transparent;cursor:pointer;
+  font-size:.74rem;color:var(--ink-2);transition:.3s;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.98rem
+}
+.truth:hover{background:var(--cream);color:var(--ink)}
+.field{margin-bottom:1.1rem}
+.field label{display:block;font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3);margin-bottom:.5rem}
+.field input,.field textarea,.field select{
+  width:100%;background:var(--cream);border:1px solid var(--line);padding:.85rem 1rem;border-radius:2px;
+  font-size:.95rem;transition:.3s;font-weight:300;
+}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--gold);background:#fff}
+.field textarea{resize:vertical;min-height:96px}
+.counter{font-size:.62rem;color:var(--ink-3);text-align:right;margin-top:.3rem;letter-spacing:.1em}
+/* the paper tag */
+.tag-stage{display:grid;place-items:center;padding:2rem 0}
+.paper-tag{
+  width:min(290px,74vw);aspect-ratio:5/8;background:linear-gradient(160deg,#F6ECDB,#EBDDC6);
+  border:1px solid rgba(169,139,92,.35);border-radius:4px;
+  clip-path:polygon(50% 0,100% 9%,100% 100%,0 100%,0 9%);
+  box-shadow:0 26px 50px -26px rgba(44,32,25,.55);
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  padding:3.4rem 1.6rem 2rem;position:relative;transform:rotate(-2deg);transition:.6s;
+}
+.paper-tag::before{
+  content:"";position:absolute;top:6.5%;left:50%;transform:translateX(-50%);
+  width:15px;height:15px;border-radius:50%;background:var(--paper);border:1px solid rgba(169,139,92,.5);
+  box-shadow:inset 0 1px 3px rgba(44,32,25,.35);
+}
+.paper-tag .tt{font-family:'Cormorant Garamond',serif;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-2)}
+.paper-tag .tn{font-family:'Cormorant Garamond',serif;font-size:1.5rem;margin-top:.15rem;letter-spacing:.02em}
+.paper-tag hr{width:56px;border:0;border-top:1px solid var(--ink);margin:.9rem auto}
+.paper-tag .msg{
+  font-family:'Cormorant Garamond',serif;font-size:1.16rem;line-height:1.45;color:var(--ink);
+  font-style:italic;flex:1;display:grid;place-items:center;padding:.3rem 0;word-break:break-word;
+}
+.paper-tag .heart{color:var(--ink);font-size:.8rem}
+.paper-tag .from{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-top:.5rem}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.8rem;counter-reset:s}
+.step{padding-top:1.6rem;border-top:1px solid var(--line);position:relative}
+.step::before{
+  counter-increment:s;content:"0" counter(s);position:absolute;top:-.85rem;left:0;background:var(--cream);
+  padding-right:.7rem;font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold);letter-spacing:.1em
+}
+.step h4{font-size:1.3rem;margin-bottom:.4rem}
+.step p{font-size:.88rem;color:var(--ink-2);line-height:1.65}
+
+/* banner */
+.banner{position:relative;padding:0}
+.banner-inner{position:relative;min-height:56svh;display:grid;place-items:center;text-align:center;overflow:hidden}
+.banner-inner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.banner-inner::after{content:"";position:absolute;inset:0;background:rgba(44,32,25,.42)}
+.banner-txt{position:relative;z-index:2;color:var(--cream);padding:4rem 1.4rem;max-width:760px}
+.banner-txt h2{font-size:clamp(2.2rem,5.4vw,4.2rem);font-style:italic}
+.banner-txt p{margin-top:1rem;opacity:.9}
+
+/* testimonials */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.quote{background:var(--paper);padding:2.2rem 1.9rem;border-radius:3px;border:1px solid var(--line)}
+.quote p{font-family:'Cormorant Garamond',serif;font-size:1.24rem;font-style:italic;line-height:1.5}
+.quote cite{display:block;margin-top:1.2rem;font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);font-style:normal}
+.stars{color:var(--burlap);font-size:.75rem;letter-spacing:.3em;margin-bottom:.9rem}
+
+/* order */
+.order{background:linear-gradient(var(--paper),var(--cream))}
+.order-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+.order-card{background:var(--cream);border:1px solid var(--line);padding:clamp(1.6rem,3.5vw,2.6rem);border-radius:4px;box-shadow:var(--shadow)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.selected-list{list-style:none;font-size:.9rem;color:var(--ink-2)}
+.selected-list li{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px dashed var(--line)}
+.selected-list li span:first-child{font-family:'Cormorant Garamond',serif;font-size:1.08rem;color:var(--ink)}
+.contact-lines{margin-top:2rem}
+.contact-lines a{display:flex;align-items:center;gap:.9rem;padding:1.05rem 0;border-bottom:1px solid var(--line);transition:.3s}
+.contact-lines a:hover{padding-left:.5rem;color:var(--gold)}
+.contact-lines b{font-weight:400;font-family:'Cormorant Garamond',serif;font-size:1.24rem}
+.contact-lines small{display:block;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
+.ok-note{background:var(--paper);border:1px solid var(--burlap);padding:1.2rem;border-radius:3px;font-size:.9rem;margin-top:1.2rem;display:none}
+.ok-note.show{display:block}
+
+/* footer */
+footer{background:var(--ink);color:#D9CBBB;padding:4.5rem 0 2rem}
+.f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.6rem;padding-bottom:3rem;border-bottom:1px solid rgba(217,203,187,.16)}
+footer h5{font-family:'Cormorant Garamond',serif;font-size:1.05rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream);margin-bottom:1.1rem;font-weight:400}
+footer ul{list-style:none;font-size:.9rem;display:grid;gap:.55rem}
+footer a:hover{color:#fff}
+.f-brand p{font-size:.94rem;max-width:34ch;margin-top:1rem;opacity:.8}
+.f-mono{width:52px;height:52px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;font-family:'Cormorant Garamond',serif;color:var(--cream);font-size:1.15rem;letter-spacing:-.06em}
+.f-bot{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:1.6rem;font-size:.72rem;letter-spacing:.1em;opacity:.65}
+
+/* cart drawer */
+.scrim{position:fixed;inset:0;background:rgba(44,32,25,.5);backdrop-filter:blur(3px);opacity:0;visibility:hidden;transition:.45s;z-index:950}
+.scrim.on{opacity:1;visibility:visible}
+.drawer{
+  position:fixed;top:0;right:0;height:100svh;width:min(420px,100vw);background:var(--cream);z-index:960;
+  transform:translateX(101%);transition:.55s cubic-bezier(.2,.7,.3,1);display:flex;flex-direction:column;box-shadow:var(--shadow)
+}
+.drawer.on{transform:none}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:1.5rem;border-bottom:1px solid var(--line)}
+.drawer-head h3{font-size:1.5rem}
+.x{background:none;border:0;font-size:1.5rem;cursor:pointer;line-height:1;color:var(--ink-2)}
+.drawer-body{flex:1;overflow-y:auto;padding:1.5rem}
+.drawer-foot{padding:1.5rem;border-top:1px solid var(--line);display:grid;gap:.7rem}
+.ci{display:flex;gap:1rem;padding-bottom:1.1rem;margin-bottom:1.1rem;border-bottom:1px solid var(--line)}
+.ci img{width:66px;height:88px;object-fit:cover;border-radius:2px;flex:none}
+.ci h4{font-size:1.16rem}
+.ci small{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
+.qty{display:flex;align-items:center;gap:.7rem;margin-top:.5rem}
+.qty button{width:24px;height:24px;border:1px solid var(--line);background:none;cursor:pointer;border-radius:50%;line-height:1;transition:.3s}
+.qty button:hover{border-color:var(--ink)}
+.qty span{font-size:.85rem;min-width:16px;text-align:center}
+.rm{background:none;border:0;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);cursor:pointer;margin-top:.4rem;text-decoration:underline}
+.empty{text-align:center;color:var(--ink-3);padding:3rem 1rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem}
+
+.reveal{opacity:0;transform:translateY(30px);transition:1s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:980px){
+  .hero-grid,.story-grid,.tag-grid,.order-grid{grid-template-columns:1fr}
+  .hero{padding-top:7rem;min-height:auto}
+  .hero-fig{order:-1;max-width:420px;margin-inline:auto}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .quotes{grid-template-columns:1fr}
+  .f-grid{grid-template-columns:1fr 1fr}
+  .story-fig .tagimg{right:-10px;bottom:-18px;width:38%}
+}
+@media(max-width:760px){
+  nav{position:fixed;inset:0 0 auto;top:0;background:var(--cream);padding:5.4rem 2rem 2.4rem;
+      transform:translateY(-102%);transition:.5s cubic-bezier(.2,.7,.3,1);box-shadow:var(--shadow)}
+  nav.on{transform:none}
+  nav ul{flex-direction:column;gap:1.3rem}
+  nav a{font-size:.9rem}
+  .burger{display:flex}
+  .pillars{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr}
+  .stamp{width:104px;height:104px;left:-14px}
+  .hero-meta{gap:1.6rem}
+  .brand small{display:none}
+  .brand b{font-size:.86rem;letter-spacing:.1em}
+  .brand{gap:.55rem}
+  .mono{width:34px;height:34px;font-size:.8rem}
+  header.solid .mono{width:32px;height:32px;font-size:.76rem}
+  .cart-btn{padding:.44rem .7rem;font-size:.6rem;gap:.4rem}
+  .nav-right{gap:.5rem}
+  header{padding:.8rem 0}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#top" class="brand">
+      <span class="mono">TTB</span>
+      <span>
+        <b>The Timeless Bloomz</b>
+        <small>For the feelings words cannot hold</small>
+      </span>
+    </a>
+    <nav id="nav">
+      <ul>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#collection">Bouquets</a></li>
+        <li><a href="#tag">The Message</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#order">Order</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <button class="cart-btn" id="cartOpen">Bag <span class="cart-count" id="cartCount">0</span></button>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Everlasting dried bouquets · Handmade in India</p>
+      <h1>Some feelings<br>never <em>wilt.</em></h1>
+      <p class="lede">Hand-tied dried flowers that keep their shape, their colour and your message — long after the moment has passed.</p>
+      <div class="hero-cta">
+        <a href="#collection" class="btn">Find your feeling</a>
+        <a href="#tag" class="btn ghost">Write the message</a>
+      </div>
+      <div class="hero-meta">
+        <div><strong>1–3 yrs</strong><span>They last</span></div>
+        <div><strong>Zero</strong><span>Water needed</span></div>
+        <div><strong>Every one</strong><span>Tied by hand</span></div>
+      </div>
+    </div>
+    <figure class="hero-fig">
+      <div class="frame"><img src="images/hero.jpg" alt="Dried flower bouquet wrapped in burlap"></div>
+      <div class="stamp"><span>Preserved ·<br>Not Perishable ·<br>Since 2025 ·</span></div>
+    </figure>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><i></i></div>
+</section>
+
+<!-- ============== MARQUEE ============== -->
+<div class="marquee">
+  <div class="marquee-track" id="mq">
+    <span>I'm proud of you</span><span>I'm sorry</span><span>Thank you for staying</span><span>I miss you</span>
+    <span>Congratulations</span><span>Just because</span><span>You're my home</span><span>I love you</span>
+  </div>
+</div>
+
+<!-- ================= STORY ================= -->
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <figure class="story-fig reveal">
+      <img src="images/bouquet-signature.jpg" alt="Dried roses and baby's breath">
+      <img class="tagimg" src="images/tag.jpg" alt="The Timeless Bloomz message tag">
+    </figure>
+    <div class="reveal">
+      <p class="eyebrow">Our Story</p>
+      <h2 style="font-size:clamp(2.2rem,4.6vw,3.6rem);margin-top:1rem">We don't sell flowers.<br>We deliver the sentence you couldn't say.</h2>
+      <blockquote>Fresh flowers say hello.<br>Dried flowers stay.</blockquote>
+      <p style="color:var(--ink-2)">The Timeless Bloomz began with a simple, stubborn thought — that the things hardest to say out loud deserve to be kept, not thrown away in five days. So we dry every stem slowly, tie every bouquet by hand, and pin a small paper tag to it carrying your words.</p>
+      <div class="pillars">
+        <div class="pillar"><i></i><h4>Naturally dried</h4><p>Air-dried over weeks, never rushed, never dyed loud.</p></div>
+        <div class="pillar"><i></i><h4>Tied by hand</h4><p>Burlap, kraft or tissue — finished with our TTB seal.</p></div>
+        <div class="pillar"><i></i><h4>Yours to keep</h4><p>No water, no wilting. It simply stays on the shelf.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COLLECTION ================= -->
+<section id="collection">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <p class="eyebrow center">The Collection</p>
+      <h2>Choose by the feeling,<br>not the flower.</h2>
+      <p>Every bouquet is built around one emotion. Pick the one that sounds like what you're trying to say.</p>
+    </div>
+    <div class="emo-chips reveal" id="chips"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- ================= TAG BUILDER ================= -->
+<section class="tagsec" id="tag">
+  <div class="wrap tag-grid">
+    <div class="reveal">
+      <p class="eyebrow">A Human Truth</p>
+      <h2 style="font-size:clamp(2.2rem,4.6vw,3.6rem);margin-top:1rem">Every bouquet<br>carries a tag.</h2>
+      <p style="color:var(--ink-2);margin-top:1rem">Write your own line, or borrow one of ours. We hand-letter it onto a cotton paper tag and tie it to the stems. Watch it appear as you type.</p>
+      <div class="truths" id="truths"></div>
+      <div class="field">
+        <label for="tagMsg">Your message</label>
+        <textarea id="tagMsg" maxlength="120" placeholder="Some people become home.">Some people become home.</textarea>
+        <div class="counter"><span id="cCount">25</span> / 120</div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="tagFrom">Signed off as</label><input id="tagFrom" maxlength="24" placeholder="— Always, U"></div>
+        <div class="field"><label for="tagNo">Truth number</label><input id="tagNo" maxlength="4" value="017"></div>
+      </div>
+      <button class="btn sm" id="attachMsg">Attach this message to my order</button>
+    </div>
+    <div class="tag-stage reveal">
+      <div class="paper-tag" id="ptag">
+        <div class="tt">— The —</div>
+        <div class="tn">Timeless Bloomz</div>
+        <hr>
+        <div class="msg" id="ptagMsg">Some people become home.</div>
+        <div class="heart">♥</div>
+        <div class="from" id="ptagFrom">A Human Truth #017</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BANNER ================= -->
+<section class="banner">
+  <div class="banner-inner">
+    <img src="images/tags-banner.jpg" alt="Message tags on dried bouquets">
+    <div class="banner-txt">
+      <h2>For the feelings words cannot hold.</h2>
+      <p>Because "I'm proud of you" sounds better tied to something that lasts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW ================= -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">How It Works</p>
+      <h2>Four small steps.</h2>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><h4>Pick the feeling</h4><p>Browse by emotion and add the bouquet to your bag.</p></div>
+      <div class="step"><h4>Write the tag</h4><p>Your line, or one of our human truths. Up to 120 characters.</p></div>
+      <div class="step"><h4>Tell us where</h4><p>Send the order over WhatsApp or the form — we confirm and quote.</p></div>
+      <div class="step"><h4>It arrives, and stays</h4><p>Wrapped, sealed and delivered. No water. No wilting.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUOTES ================= -->
+<section style="background:var(--cream);padding-top:0">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <p class="eyebrow center">Kind Words</p>
+      <h2>What people said after.</h2>
+    </div>
+    <div class="quotes reveal">
+      <div class="quote"><div class="stars">★★★★★</div><p>"She cried at the tag before she even looked at the flowers."</p><cite>Aarav · Dehradun</cite></div>
+      <div class="quote"><div class="stars">★★★★★</div><p>"Bought it in March. It's August. It still sits on her desk exactly the same."</p><cite>Ritika · Delhi</cite></div>
+      <div class="quote"><div class="stars">★★★★★</div><p>"I couldn't apologise properly. This did it for me."</p><cite>Karan · Haridwar</cite></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ORDER ================= -->
+<section class="order" id="order">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <p class="eyebrow center">Place an Order</p>
+      <h2>Send the feeling.</h2>
+      <p>Fill this in and we'll confirm availability, price and delivery — or send it straight to our WhatsApp in one tap.</p>
+    </div>
+    <div class="order-grid">
+      <form class="order-card reveal" id="orderForm">
+        <div class="row">
+          <div class="field"><label for="oName">Your name</label><input id="oName" required placeholder="Utsav"></div>
+          <div class="field"><label for="oPhone">Phone / WhatsApp</label><input id="oPhone" required placeholder="+91"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="oCity">Delivery city</label><input id="oCity" placeholder="Dehradun"></div>
+          <div class="field"><label for="oDate">Preferred date</label><input id="oDate" type="date"></div>
+        </div>
+        <div class="field">
+          <label for="oOcc">Occasion / feeling</label>
+          <select id="oOcc">
+            <option>Love</option><option>Missing You</option><option>Gratitude</option>
+            <option>Congratulations</option><option>Apology</option><option>Just Because</option>
+            <option>Birthday</option><option>Anniversary</option><option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Bouquets in your bag</label>
+          <ul class="selected-list" id="formList"><li><span>Nothing added yet</span><span>—</span></li></ul>
+        </div>
+        <div class="field"><label for="oMsg">Message for the tag</label><textarea id="oMsg" maxlength="120" placeholder="Some people become home."></textarea></div>
+        <div class="field"><label for="oNote">Anything else</label><textarea id="oNote" placeholder="Wrap colour, surprise delivery, a note about the person…"></textarea></div>
+        <button type="submit" class="btn full">Send enquiry</button>
+        <button type="button" class="btn wa full" id="waSend" style="margin-top:.7rem">Send on WhatsApp instead</button>
+        <div class="ok-note" id="okNote"></div>
+      </form>
+
+      <div class="reveal">
+        <img src="images/collection-wide.jpg" alt="Four dried flower bouquets" style="width:100%;border-radius:4px;box-shadow:var(--shadow)">
+        <div class="contact-lines">
+          <a href="#" id="waLink"><span><small>WhatsApp</small><b>Message us directly</b></span></a>
+          <a href="#" id="igLink"><span><small>Instagram</small><b>@thetimelessbloomz</b></span></a>
+          <a href="#" id="mailLink"><span><small>Email</small><b>hello@thetimelessbloomz.com</b></span></a>
+        </div>
+        <p style="font-size:.86rem;color:var(--ink-3);margin-top:1.4rem">Made to order — please allow 2–4 days for us to dry, tie and letter your bouquet before dispatch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-brand">
+        <div class="f-mono">TTB</div>
+        <h5 style="margin-top:1.1rem">The Timeless Bloomz</h5>
+        <p>For the feelings words cannot hold. Hand-tied everlasting bouquets, delivered with your words attached.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#collection">The Collection</a></li>
+          <li><a href="#tag">The Message Tag</a></li>
+          <li><a href="#how">How It Works</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Care</h5>
+        <ul>
+          <li>Keep out of direct sunlight</li>
+          <li>Never add water</li>
+          <li>Dust gently with a hairdryer on cool</li>
+          <li>Lasts 1–3 years</li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span>© <span id="yr"></span> The Timeless Bloomz</span>
+      <span>Dried by hand · Delivered with feeling</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= CART ================= -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h3>Your Bag</h3>
+    <button class="x" id="cartClose">×</button>
+  </div>
+  <div class="drawer-body" id="cartBody"></div>
+  <div class="drawer-foot">
+    <p style="font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)">Pricing confirmed on enquiry</p>
+    <button class="btn full" id="toCheckout">Checkout — send enquiry</button>
+    <button class="btn wa full" id="cartWa">Order on WhatsApp</button>
+  </div>
+</aside>
+
+<script>
+/* ====== EDIT THESE THREE LINES ====== */
+const CONFIG = {
+  whatsapp: "919999999999",                 // your number, country code, no + or spaces
+  instagram: "https://instagram.com/thetimelessbloomz",
+  email: "hello@thetimelessbloomz.com"
+};
+/* ==================================== */
+
+const BOUQUETS = [
+  { id:'signature', name:'The Burlap Classic', emo:'Love',
+    img:'images/bouquet-signature.jpg',
+    desc:'Chocolate-brown roses, baby’s breath and bunny tails in raw burlap. Our first, and still the one people cry over.' },
+  { id:'paper-posy', name:'Paper & Posy', emo:'Gratitude',
+    img:'images/bouquet-1.jpg',
+    desc:'Newsprint and burlap wrap around ivory sola blooms — quiet, warm, and impossible to throw away.' },
+  { id:'burlap-petite', name:'Burlap Petite', emo:'Just Because',
+    img:'images/bouquet-2.jpg',
+    desc:'A small handful of dried wildflowers. The one you send on a Tuesday for no reason at all.' },
+  { id:'quiet-blue', name:'Quiet Blue', emo:'Congratulations',
+    img:'images/bouquet-3.jpg',
+    desc:'Powder-blue tissue, white sola roses and pampas. For beginnings, offers, and good news.' },
+  { id:'blush-hour', name:'Blush Hour', emo:'Missing You',
+    img:'images/bouquet-4.jpg',
+    desc:'Dusty pink wrap with pampas and preserved blooms. Soft enough to say the thing you keep swallowing.' },
+  { id:'the-apology', name:'The Quiet Sorry', emo:'Apology',
+    img:'images/bouquet-macro.jpg',
+    desc:'Muted kraft wrap, no loud colour, one folded tag. Built for the conversations that need less noise.' }
+];
+
+const TRUTHS = [
+  { n:'017', t:'Some people become home.' },
+  { n:'003', t:'Missing you is love with nowhere to go.' },
+  { n:'009', t:'Some things are easier to hold than to say.' },
+  { n:'021', t:'Thank you is a small word for a large thing.' },
+  { n:'026', t:'I am so proud of you. Out loud, this time.' },
+  { n:'034', t:'Sorry is only worth what comes after it.' },
+  { n:'042', t:'You made an ordinary year feel chosen.' }
+];
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+
+/* ---------- header + nav ---------- */
+const hdr = $('#hdr');
+addEventListener('scroll', () => hdr.classList.toggle('solid', scrollY > 40));
+$('#burger').onclick = () => $('#nav').classList.toggle('on');
+$$('#nav a').forEach(a => a.onclick = () => $('#nav').classList.remove('on'));
+$('#yr').textContent = new Date().getFullYear();
+
+/* duplicate marquee for seamless loop */
+$('#mq').innerHTML += $('#mq').innerHTML;
+
+/* ---------- contact links ---------- */
+const waBase = 'https://wa.me/' + CONFIG.whatsapp + '?text=';
+$('#igLink').href = CONFIG.instagram;
+$('#mailLink').href = 'mailto:' + CONFIG.email;
+$('#waLink').href = waBase + encodeURIComponent('Hi The Timeless Bloomz! I would like to order a bouquet.');
+
+/* ---------- collection ---------- */
+const emotions = ['All', ...new Set(BOUQUETS.map(b => b.emo))];
+$('#chips').innerHTML = emotions.map((e, i) =>
+  `<button class="chip${i === 0 ? ' on' : ''}" data-e="${e}">${e}</button>`).join('');
+
+$('#grid').innerHTML = BOUQUETS.map(b => `
+  <article class="card" data-e="${b.emo}">
+    <div class="card-img">
+      <img src="${b.img}" alt="${b.name}" loading="lazy">
+      <span class="emo">${b.emo}</span>
+      <div class="add"><button class="btn sm full" data-add="${b.id}">Add to bag</button></div>
+    </div>
+    <h3>${b.name}</h3>
+    <p class="desc">${b.desc}</p>
+    <p class="price">Price on enquiry</p>
+  </article>`).join('');
+
+$('#chips').onclick = e => {
+  const b = e.target.closest('.chip'); if (!b) return;
+  $$('.chip').forEach(c => c.classList.remove('on')); b.classList.add('on');
+  const f = b.dataset.e;
+  $$('.card').forEach(c => c.classList.toggle('hide', f !== 'All' && c.dataset.e !== f));
+};
+
+/* ---------- tag builder ---------- */
+$('#truths').innerHTML = TRUTHS.map(t => `<button class="truth" data-n="${t.n}">${t.t}</button>`).join('');
+const msgEl = $('#tagMsg'), fromEl = $('#tagFrom'), noEl = $('#tagNo');
+
+function paintTag() {
+  const m = msgEl.value.trim() || 'Your words go here.';
+  $('#ptagMsg').textContent = m;
+  $('#cCount').textContent = msgEl.value.length;
+  const f = fromEl.value.trim();
+  $('#ptagFrom').textContent = f ? f : 'A Human Truth #' + (noEl.value.trim() || '017');
+}
+[msgEl, fromEl, noEl].forEach(el => el.oninput = paintTag);
+$('#truths').onclick = e => {
+  const b = e.target.closest('.truth'); if (!b) return;
+  msgEl.value = b.textContent; noEl.value = b.dataset.n; fromEl.value = ''; paintTag();
+};
+$('#attachMsg').onclick = () => {
+  $('#oMsg').value = msgEl.value;
+  $('#order').scrollIntoView({ behavior: 'smooth' });
+};
+paintTag();
+
+/* ---------- cart ---------- */
+let cart = [];
+const drawer = $('#drawer'), scrim = $('#scrim');
+const openCart = () => { drawer.classList.add('on'); scrim.classList.add('on'); document.body.classList.add('locked'); };
+const closeCart = () => { drawer.classList.remove('on'); scrim.classList.remove('on'); document.body.classList.remove('locked'); };
+$('#cartOpen').onclick = openCart; $('#cartClose').onclick = closeCart; scrim.onclick = closeCart;
+
+document.addEventListener('click', e => {
+  const id = e.target.dataset && e.target.dataset.add;
+  if (!id) return;
+  const line = cart.find(c => c.id === id);
+  line ? line.q++ : cart.push({ id, q: 1 });
+  drawCart(); openCart();
+});
+
+function drawCart() {
+  const body = $('#cartBody');
+  if (!cart.length) {
+    body.innerHTML = '<p class="empty">Your bag is still empty.<br>Pick a feeling.</p>';
+  } else {
+    body.innerHTML = cart.map(c => {
+      const b = BOUQUETS.find(x => x.id === c.id);
+      return `<div class="ci">
+        <img src="${b.img}" alt="">
+        <div>
+          <h4>${b.name}</h4><small>${b.emo}</small>
+          <div class="qty">
+            <button data-q="-1" data-id="${b.id}">−</button><span>${c.q}</span><button data-q="1" data-id="${b.id}">+</button>
+          </div>
+          <button class="rm" data-rm="${b.id}">Remove</button>
+        </div></div>`;
+    }).join('');
+  }
+  const n = cart.reduce((s, c) => s + c.q, 0);
+  $('#cartCount').textContent = n;
+  $('#formList').innerHTML = cart.length
+    ? cart.map(c => { const b = BOUQUETS.find(x => x.id === c.id);
+        return `<li><span>${b.name}</span><span>× ${c.q}</span></li>`; }).join('')
+    : '<li><span>Nothing added yet</span><span>—</span></li>';
+}
+$('#cartBody').onclick = e => {
+  const t = e.target;
+  if (t.dataset.q) {
+    const l = cart.find(c => c.id === t.dataset.id);
+    l.q += Number(t.dataset.q);
+    if (l.q < 1) cart = cart.filter(c => c.id !== l.id);
+    drawCart();
+  }
+  if (t.dataset.rm) { cart = cart.filter(c => c.id !== t.dataset.rm); drawCart(); }
+};
+drawCart();
+
+$('#toCheckout').onclick = () => { closeCart(); $('#order').scrollIntoView({ behavior: 'smooth' }); };
+
+/* ---------- order message ---------- */
+function orderText() {
+  const items = cart.length
+    ? cart.map(c => { const b = BOUQUETS.find(x => x.id === c.id); return `• ${b.name} (${b.emo}) × ${c.q}`; }).join('\n')
+    : '• (not selected yet)';
+  return `Hi The Timeless Bloomz!
+
+I'd like to order:
+${items}
+
+Name: ${$('#oName').value || '—'}
+Phone: ${$('#oPhone').value || '—'}
+City: ${$('#oCity').value || '—'}
+Date: ${$('#oDate').value || '—'}
+Occasion: ${$('#oOcc').value}
+Tag message: "${$('#oMsg').value || msgEl.value}"
+Notes: ${$('#oNote').value || '—'}`;
+}
+$('#cartWa').onclick = () => window.open(waBase + encodeURIComponent(orderText()), '_blank');
+$('#waSend').onclick = () => window.open(waBase + encodeURIComponent(orderText()), '_blank');
+
+$('#orderForm').onsubmit = e => {
+  e.preventDefault();
+  const note = $('#okNote');
+  note.classList.add('show');
+  note.innerHTML = `<b style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400">Thank you, ${$('#oName').value.split(' ')[0]}.</b><br>
+    Your enquiry is ready to send. Tap the WhatsApp button below to deliver it to us instantly — or copy it and email ${CONFIG.email}.
+    <br><br><button type="button" class="btn sm" id="copyBtn">Copy my order</button>`;
+  note.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  setTimeout(() => {
+    const cb = $('#copyBtn');
+    if (cb) cb.onclick = () => {
+      navigator.clipboard.writeText(orderText());
+      cb.textContent = 'Copied ✓';
+    };
+  }, 0);
+};
+
+/* ---------- reveal ---------- */
+const io = new IntersectionObserver(es => es.forEach(en => {
+  if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+}), { threshold: .12 });
+$$('.reveal').forEach(el => io.observe(el));
+
+const io2 = new IntersectionObserver(es => es.forEach((en, i) => {
+  if (en.isIntersecting) {
+    setTimeout(() => en.target.classList.add('in'), i * 90);
+    io2.unobserve(en.target);
+  }
+}), { threshold: .1 });
+$$('.card').forEach(el => io2.observe(el));
+</script>
+</body>
+</html>
